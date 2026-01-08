@@ -1,0 +1,1 @@
+["^ ","~$SeqSource",["^ ","~:row",15,"~:col",1,"~:name","^0","~:ns","~$manifold.stream.seq","~:top-ns","^5"],"~$->SeqSource",["^ ","^1",15,"^2",1,"~:fixed-arities",["~#set",[2]],"^3","^7","^4","^5","^6","^5","~:type","~:fn"],"~:filename","/Users/ivan.willig/.m2/repository/manifold/manifold/0.4.3/manifold-0.4.3.jar:manifold/stream/seq.clj"]
