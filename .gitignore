@@ -1,0 +1,7 @@
+*.json
+/.nrepl-port
+/.cpcache/
+/junit.xml
+/.clj-kondo/.cache/
+/target/
+/classes/

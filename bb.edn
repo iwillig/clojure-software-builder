@@ -44,15 +44,15 @@
         :task (do
                 (apply clojure (into ["-M:jvm-base:main"] *command-line-args*)))}
 
-  compile {:doc "Compile Main Clojure namespace"
-           :task (clojure
-                  "-M"
-                  "-e" "(compile 'khaldun.main)")}
+   compile {:doc "Compile Main Clojure namespace"
+            :task (clojure
+                   "-M"
+                   "-e" "(compile 'csb.main)")}
 
-  build-uberjar {:doc "Build UberJar Jar"
-                 :task
-                 (clojure "-M:jvm-base:uberdeps"
-                          "--main-class" "living-docs.main")}
+   build-uberjar {:doc "Build UberJar Jar"
+                  :task
+                  (clojure "-M:jvm-base:uberdeps"
+                           "--main-class" "csb.main")}
 
   build-gvm {:doc "Build GraalVM native image"
              :task
@@ -60,7 +60,7 @@
                     "--no-fallback"
                     "--initialize-at-build-time"
                     "-jar"
-                    "target/living-docs.jar")}
+                    "target/csb.jar")}
 
   build-cli {:doc "Rebuild Command Line Tool"
              :task (do (run 'clean)

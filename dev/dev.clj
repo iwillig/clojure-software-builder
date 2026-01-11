@@ -3,9 +3,9 @@
    [clj-kondo.core :as clj-kondo]
    [clj-reload.core :as reload]
    [clojure.repl :refer [doc]]
+   [com.brunobonacci.mulog :as u]
    [io.aviso.repl :as repl]
    [kaocha.repl :as k]
-   [com.brunobonacci.mulog :as u]
    [typed.clojure :as t]))
 
 (u/start-publisher! {:type :console})
