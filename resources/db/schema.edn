@@ -1,8 +1,18 @@
-{
+{:project/id {:db/valueType :db.type/uuid
+              :db/unique    :db.unique/identity}
 
- :session/id   {}
- :message/id   {}
- :tool-call/id {}
+
+ :fact/id {}
+
+ :session/id           {}
+ :message/id           {}
+ :tool-call/id         {}
+ :plan/id              {}
+ :task/id              {}
+ :error/id             {}
+ :file/id              {}
+ :file-change/id       {}
+ :file-change-apply/id {}
 
 
  }

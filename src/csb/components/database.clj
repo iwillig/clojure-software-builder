@@ -1,19 +1,28 @@
 (ns csb.components.database
   (:require
-   [clojure.java.io :as io]
    [clojure.edn :as edn]
+   [clojure.java.io :as io]
    [com.stuartsierra.component :as c]
    [csb.components]
    [datalevin.core :as d]
    [typed.clojure :as t])
   (:import
-   (java.io PushbackReader)))
+   (java.io
+    PushbackReader)))
 
+
+(t/ann schema-path t/Str)
+(def schema-path
+  "db/schema.edn")
+
+(t/ann schema [:-> t/Map])
+
+(t/ann edn/read [t/Any :-> t/Map])
 
 (defn- schema
   []
   (with-open [reader (io/reader
-                      (io/resource "db/schema.edn"))]
+                      (io/resource schema-path))]
     (edn/read (PushbackReader. reader))))
 
 
