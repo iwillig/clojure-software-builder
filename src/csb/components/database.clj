@@ -1,12 +1,23 @@
 (ns csb.components.database
   (:require
+   [clojure.java.io :as io]
+   [clojure.edn :as edn]
    [com.stuartsierra.component :as c]
    [csb.components]
    [datalevin.core :as d]
-   [typed.clojure :as t]))
+   [typed.clojure :as t])
+  (:import
+   (java.io PushbackReader)))
 
 
-(t/ann d/create-conn [t/Str :-> (t/Atom1 t/Any)])
+(defn- schema
+  []
+  (with-open [reader (io/reader
+                      (io/resource "db/schema.edn"))]
+    (edn/read (PushbackReader. reader))))
+
+
+(t/ann d/create-conn [t/Str t/Any :-> (t/Atom1 t/Any)])
 (t/ann d/close  [t/Any :-> nil])
 
 
@@ -16,7 +27,7 @@
 (defrecord Database [db-path connection]
   c/Lifecycle
   (start [this]
-    (let [conn (d/create-conn db-path)]
+    (let [conn (d/create-conn db-path (schema))]
       (assoc this :connection conn)))
   (stop [this]
     (when-let [conn (:connection this)]

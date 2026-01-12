@@ -1,6 +1,9 @@
 (ns csb.main-test
-  (:require [clojure.test :refer [deftest is testing]]))
+  (:require
+   [typed.clojure :as t]
+   [csb.main]
+   [clojure.test :refer [deftest is testing]]))
 
-(deftest okay?
-  (testing "Context of the test assertions"
-    (is (= {} {}))))
+(deftest type-check
+  (testing "checking-types-main"
+    (is (t/check-ns-clj 'csb.main))))
