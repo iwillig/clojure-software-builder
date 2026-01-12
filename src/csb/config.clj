@@ -1,5 +1,6 @@
 (ns csb.config
-  (:require [typed.clojure :as t]))
+  (:require
+   [typed.clojure :as t]))
 
 
 (defrecord Config [port db-path])
@@ -14,4 +15,4 @@
                 :db-path "db-path"}))
 
 (t/ann load-config
-       [nil :-> Config])
+       [:-> Config])

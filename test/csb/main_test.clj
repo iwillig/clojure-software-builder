@@ -3,4 +3,4 @@
 
 (deftest okay?
   (testing "Context of the test assertions"
-    (is (= {} #{}))))
+    (is (= {} {}))))
