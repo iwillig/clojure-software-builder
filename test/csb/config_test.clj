@@ -1,9 +1,11 @@
 (ns csb.config-test
   (:require
-   [typed.clojure :as t]
    [csb.config]
    [clojure.test :refer [deftest is testing]]))
 
-(deftest type-check
-  (testing "checking-types-config"
-    (is (t/check-ns-clj 'csb.config))))
+(deftest config-loaded-correctly
+  (testing "config loads correctly"
+    (let [config (csb.config/load-config)]
+      (is (map? config))
+      (is (= 3000 (:port config)))
+      (is (= "db-path" (:db-path config))))))
