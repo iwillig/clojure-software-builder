@@ -1,124 +1,125 @@
-{:project/id           {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
-  :project/name         {:db/valueType :db.type/string}
-  :project/description  {:db/valueType :db.type/string}
-  :project/path         {:db/valueType :db.type/string}
-  :project/created-at   {:db/valueType :db.type/instant}
-  :project/updated-at   {:db/valueType :db.type/instant}
+{:project/name         {:db/valueType :db.type/string
+                        :db/unique    :db.unique/value}
 
-  :plan/id              {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
-  :plan/project         {:db/valueType :db.type/ref}
-  :plan/name            {:db/valueType :db.type/string}
-  :plan/context         {:db/valueType :db.type/string
-                         :db/fulltext  true}
-  :plan/state           {:db/valueType :db.type/ref}
-  :plan/created-at      {:db/valueType :db.type/instant}
-  :plan/updated-at      {:db/valueType :db.type/instant}
+ :project/description  {:db/valueType :db.type/string}
+ :project/path         {:db/valueType :db.type/string}
+ :project/created-at   {:db/valueType :db.type/instant}
+ :project/updated-at   {:db/valueType :db.type/instant}
 
-  :task/id              {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
-  :task/plan            {:db/valueType :db.type/ref}
-  :task/parent          {:db/valueType :db.type/ref}
-  :task/name            {:db/valueType :db.type/string}
-  :task/context         {:db/valueType :db.type/string
-                         :db/fulltext  true}
-  :task/completed       {:db/valueType :db.type/boolean}
-  :task/created-at      {:db/valueType :db.type/instant}
-  :task/updated-at      {:db/valueType :db.type/instant}
 
-  :file/id              {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
-  :file/project         {:db/valueType :db.type/ref}
-  :file/path            {:db/valueType :db.type/string}
-  :file/summary         {:db/valueType :db.type/string}
-  :file/created-at      {:db/valueType :db.type/instant}
-  :file/updated-at      {:db/valueType :db.type/instant}
+ :plan/id              {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
+ :plan/project         {:db/valueType :db.type/ref}
+ :plan/name            {:db/valueType :db.type/string}
+ :plan/context         {:db/valueType :db.type/string
+                        :db/fulltext  true}
+ :plan/state           {:db/valueType :db.type/ref}
+ :plan/created-at      {:db/valueType :db.type/instant}
+ :plan/updated-at      {:db/valueType :db.type/instant}
 
-  :file-content/id        {:db/valueType :db.type/uuid
-                           :db/unique    :db.unique/value}
-  :file-content/file      {:db/valueType :db.type/ref}
-  :file-content/content   {:db/valueType :db.type/string}
-  :file-content/compact-ast {:db/valueType :db.type/string}
-  :file-content/parsed-at {:db/valueType :db.type/instant}
-  :file-content/created-at {:db/valueType :db.type/instant}
-  :file-content/updated-at {:db/valueType :db.type/instant}
+ :task/id              {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
+ :task/plan            {:db/valueType :db.type/ref}
+ :task/parent          {:db/valueType :db.type/ref}
+ :task/name            {:db/valueType :db.type/string}
+ :task/context         {:db/valueType :db.type/string
+                        :db/fulltext  true}
+ :task/completed       {:db/valueType :db.type/boolean}
+ :task/created-at      {:db/valueType :db.type/instant}
+ :task/updated-at      {:db/valueType :db.type/instant}
 
-  :file-change/id           {:db/valueType :db.type/uuid
-                             :db/unique    :db.unique/value}
-  :file-change/plan         {:db/valueType :db.type/ref}
-  :file-change/file         {:db/valueType :db.type/ref}
-  :file-change/created-at   {:db/valueType :db.type/instant}
-  :file-change/updated-at   {:db/valueType :db.type/instant}
+ :file/id              {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
+ :file/project         {:db/valueType :db.type/ref}
+ :file/path            {:db/valueType :db.type/string}
+ :file/summary         {:db/valueType :db.type/string}
+ :file/created-at      {:db/valueType :db.type/instant}
+ :file/updated-at      {:db/valueType :db.type/instant}
 
-  :file-change-change/id         {:db/valueType :db.type/uuid
-                                  :db/unique    :db.unique/value}
-  :file-change-change/file-change {:db/valueType :db.type/ref}
-  :file-change-change/type        {:db/valueType :db.type/string}
-  :file-change-change/line-start  {:db/valueType :db.type/long}
-  :file-change-change/line-end    {:db/valueType :db.type/long}
-  :file-change-change/content     {:db/valueType :db.type/string}
-  :file-change-change/created-at  {:db/valueType :db.type/instant}
-  :file-change-change/updated-at  {:db/valueType :db.type/instant}
+ :file-content/id        {:db/valueType :db.type/uuid
+                          :db/unique    :db.unique/value}
+ :file-content/file      {:db/valueType :db.type/ref}
+ :file-content/content   {:db/valueType :db.type/string}
+ :file-content/compact-ast {:db/valueType :db.type/string}
+ :file-content/parsed-at {:db/valueType :db.type/instant}
+ :file-content/created-at {:db/valueType :db.type/instant}
+ :file-content/updated-at {:db/valueType :db.type/instant}
 
-  :file-change-ast/id              {:db/valueType :db.type/uuid
-                                    :db/unique    :db.unique/value}
-  :file-change-ast/file-change     {:db/valueType :db.type/ref}
-  :file-change-ast/node-path       {:db/valueType :db.type/string}
-  :file-change-ast/node-tag        {:db/valueType :db.type/string}
-  :file-change-ast/node-string     {:db/valueType :db.type/string}
-  :file-change-ast/node-compact-ast {:db/valueType :db.type/string}
-  :file-change-ast/type            {:db/valueType :db.type/string}
-  :file-change-ast/created-at      {:db/valueType :db.type/instant}
-  :file-change-ast/updated-at      {:db/valueType :db.type/instant}
+ :file-change/id           {:db/valueType :db.type/uuid
+                            :db/unique    :db.unique/value}
+ :file-change/plan         {:db/valueType :db.type/ref}
+ :file-change/file         {:db/valueType :db.type/ref}
+ :file-change/created-at   {:db/valueType :db.type/instant}
+ :file-change/updated-at   {:db/valueType :db.type/instant}
 
-  :file-change-application/id         {:db/valueType :db.type/uuid
+ :file-change-change/id         {:db/valueType :db.type/uuid
+                                 :db/unique    :db.unique/value}
+ :file-change-change/file-change {:db/valueType :db.type/ref}
+ :file-change-change/type        {:db/valueType :db.type/string}
+ :file-change-change/line-start  {:db/valueType :db.type/long}
+ :file-change-change/line-end    {:db/valueType :db.type/long}
+ :file-change-change/content     {:db/valueType :db.type/string}
+ :file-change-change/created-at  {:db/valueType :db.type/instant}
+ :file-change-change/updated-at  {:db/valueType :db.type/instant}
+
+ :file-change-ast/id              {:db/valueType :db.type/uuid
+                                   :db/unique    :db.unique/value}
+ :file-change-ast/file-change     {:db/valueType :db.type/ref}
+ :file-change-ast/node-path       {:db/valueType :db.type/string}
+ :file-change-ast/node-tag        {:db/valueType :db.type/string}
+ :file-change-ast/node-string     {:db/valueType :db.type/string}
+ :file-change-ast/node-compact-ast {:db/valueType :db.type/string}
+ :file-change-ast/type            {:db/valueType :db.type/string}
+ :file-change-ast/created-at      {:db/valueType :db.type/instant}
+ :file-change-ast/updated-at      {:db/valueType :db.type/instant}
+
+ :file-change-application/id         {:db/valueType :db.type/uuid
                                       :db/unique    :db.unique/value}
-  :file-change-application/file-change {:db/valueType :db.type/ref}
-  :file-change-application/plan        {:db/valueType :db.type/ref}
-  :file-change-application/status      {:db/valueType :db.type/string}
-  :file-change-application/result-message {:db/valueType :db.type/string}
-  :file-change-application/applied-at    {:db/valueType :db.type/instant}
-  :file-change-application/created-at    {:db/valueType :db.type/instant}
-  :file-change-application/updated-at    {:db/valueType :db.type/instant}
+ :file-change-application/file-change {:db/valueType :db.type/ref}
+ :file-change-application/plan        {:db/valueType :db.type/ref}
+ :file-change-application/status      {:db/valueType :db.type/string}
+ :file-change-application/result-message {:db/valueType :db.type/string}
+ :file-change-application/applied-at    {:db/valueType :db.type/instant}
+ :file-change-application/created-at    {:db/valueType :db.type/instant}
+ :file-change-application/updated-at    {:db/valueType :db.type/instant}
 
-  :error/id                 {:db/valueType :db.type/uuid
-                             :db/unique    :db.unique/value}
-  :error/plan               {:db/valueType :db.type/ref}
-  :error/message            {:db/valueType :db.type/string
-                             :db/fulltext  true}
-  :error/stack-trace        {:db/valueType :db.type/string}
-  :error/created-at         {:db/valueType :db.type/instant}
-  :error/updated-at         {:db/valueType :db.type/instant}
+ :error/id                 {:db/valueType :db.type/uuid
+                            :db/unique    :db.unique/value}
+ :error/plan               {:db/valueType :db.type/ref}
+ :error/message            {:db/valueType :db.type/string
+                            :db/fulltext  true}
+ :error/stack-trace        {:db/valueType :db.type/string}
+ :error/created-at         {:db/valueType :db.type/instant}
+ :error/updated-at         {:db/valueType :db.type/instant}
 
-  :plan/skills                {:db/valueType   :db.type/ref
-                               :db/cardinality :db.cardinality/many}
+ :plan/skills                {:db/valueType   :db.type/ref
+                              :db/cardinality :db.cardinality/many}
 
-  :plan-state/id              {:db/valueType :db.type/string
-                               :db/unique    :db.unique/value}
+ :plan-state/id              {:db/valueType :db.type/string
+                              :db/unique    :db.unique/value}
 
-  :fact/id              {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
-  :fact/name             {:db/valueType           :db.type/string
-                          :db/fulltext            true
-                          :db.fulltext/autoDomain true}
-  :fact/description     {:db/valueType           :db.type/string
+ :fact/id              {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
+ :fact/name             {:db/valueType           :db.type/string
                          :db/fulltext            true
                          :db.fulltext/autoDomain true}
+ :fact/description     {:db/valueType           :db.type/string
+                        :db/fulltext            true
+                        :db.fulltext/autoDomain true}
 
-  :session/id           {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
-  :session/facts        {:db/valueType   :db.type/ref
-                         :db/cardinality :db.cardinality/many}
-  :session/messages     {:db/valueType   :db.type/ref
-                         :db/cardinality :db.cardinality/many}
+ :session/id           {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
+ :session/facts        {:db/valueType   :db.type/ref
+                        :db/cardinality :db.cardinality/many}
+ :session/messages     {:db/valueType   :db.type/ref
+                        :db/cardinality :db.cardinality/many}
 
-  :message/id           {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
+ :message/id           {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
 
-  :tool-call/id         {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
+ :tool-call/id         {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
 
-  :file-change-apply/id {:db/valueType :db.type/uuid
-                         :db/unique    :db.unique/value}
+ :file-change-apply/id {:db/valueType :db.type/uuid
+                        :db/unique    :db.unique/value}
   }

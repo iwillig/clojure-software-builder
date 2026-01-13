@@ -5,8 +5,8 @@
    [typed.clojure :as t]))
 
 ;; Type annotations for http-kit functions used in the application
-(t/ann http/run-server [(t/Fn [t/Any :-> t/Any]) t/Any :-> (t/Atom1 t/Any)])
-(t/ann http/server-stop! [(t/Atom1 t/Any) :-> t/Any])
+(t/ann http/run-server [[t/Any :-> t/Any] t/Any :-> t/Any])
+(t/ann http/server-stop! [t/Any :-> t/Any])
 
 ;; Reference the namespace to prevent unused import warning
 (comment

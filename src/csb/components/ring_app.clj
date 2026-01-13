@@ -6,16 +6,18 @@
    [typed.clojure :as t]))
 
 (t/ann-record RingApp [routes :- t/Any
-                       handler :- (t/Fn [t/Any :-> t/Any])])
+                       handler :- (t/Option (t/IFn [t/Any :-> t/Any]))])
 
 (defrecord RingApp [routes handler]
   c/Lifecycle
   (start [this]
-    (let [handler (fn [request]
-                    (let [matched (bidi/match-route routes (:uri request))]
-                      (if matched
-                        ((:handler matched) request)
-                        {:status 404 :body "Not found"})))]
+    (let [handler (t/ann-form
+                   (fn [request]
+                     (let [matched (bidi/match-route routes (:uri request))]
+                       (if matched
+                         (t/tc-ignore ((:handler matched) request))
+                         {:status 404 :body "Not found"})))
+                   [t/Any :-> t/Any])]
       (assoc this :handler handler)))
   (stop [this]
     (assoc this :handler nil)))
@@ -23,4 +25,4 @@
 (t/ann ->ring-app [t/Any :-> RingApp])
 
 (defn ->ring-app [routes]
-  (map->RingApp {:routes routes}))
+  (map->RingApp {:routes routes :handler nil}))

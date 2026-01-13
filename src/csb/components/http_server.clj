@@ -6,7 +6,7 @@
    [typed.clojure :as t]))
 
 (t/ann-record HttpServer [port :- t/Int
-                          server :- (t/Option (t/Atom1 t/Any))])
+                          server :- (t/Option t/Any)])
 
 (defrecord HttpServer [port server]
   c/Lifecycle

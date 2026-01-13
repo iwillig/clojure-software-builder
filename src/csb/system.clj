@@ -10,8 +10,8 @@
    (csb.config
     Config)))
 
-(t/ann new-system [Config -> SystemMap])
-(t/ann c/system-map [t/Any :* -> SystemMap])
+(t/ann new-system [Config :-> SystemMap])
+(t/ann c/system-map [t/Any :* :-> SystemMap])
 
 
 (defn new-system
