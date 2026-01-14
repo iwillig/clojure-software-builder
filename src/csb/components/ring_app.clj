@@ -26,3 +26,13 @@
 
 (defn ->ring-app [routes]
   (map->RingApp {:routes routes :handler nil}))
+
+(t/ann get-handler [(t/Option RingApp) :-> (t/Option (t/IFn [t/Any :-> t/Any]))])
+(defn get-handler
+  [component]
+  (when component
+    (get component :handler)))
+
+(comment
+  (get-handler {})
+  (->ring-app []))
