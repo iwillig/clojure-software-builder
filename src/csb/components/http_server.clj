@@ -32,9 +32,7 @@
 
 (defn ->http-server [port]
   (t/tc-ignore
-   (c/using
-    (map->HttpServer {:port port :server nil})
-    {:ring-app :ring-app})))
+   (map->HttpServer {:port port :server nil})))
 
 
 (comment

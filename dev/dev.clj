@@ -3,15 +3,12 @@
    [clj-kondo.core :as clj-kondo]
    [clj-reload.core :as reload]
    [clojure.repl :refer [doc]]
-   [com.brunobonacci.mulog :as u]
    [com.stuartsierra.component :as component]
    [csb.config :as config]
    [csb.system :as system]
    [io.aviso.repl :as repl]
    [kaocha.repl :as k]
    [typed.clojure :as t]))
-
-(u/start-publisher! {:type :console})
 
 (repl/install-pretty-exceptions)
 

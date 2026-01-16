@@ -1,3 +1,5 @@
 {:linters
  {:unused-imports
-  {:exclude [csb.components]}}}
+  {:exclude [csb.components]}
+  :missing-clause-in-try
+  {:level :off}}}

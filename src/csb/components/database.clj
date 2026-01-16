@@ -2,10 +2,8 @@
   (:require
    [clojure.edn :as edn]
    [clojure.java.io :as io]
-   [com.brunobonacci.mulog :as u]
    [com.stuartsierra.component :as c]
    [csb.annotations.datalevin]
-   [csb.annotations.mulog]
    [csb.components]
    [datalevin.core :as d]
    [typed.clojure :as t])
@@ -39,12 +37,10 @@
   c/Lifecycle
   (start [this]
     (let [conn (d/create-conn db-path (schema))]
-      (u/log ::db-starting)
       (assoc this :connection conn)))
   (stop [this]
     (when-let [conn (:connection this)]
       (d/close conn))
-    (u/log ::db-stopping)
     (assoc this :connection nil)))
 
 (t/ann new-database [t/Str :-> Database])

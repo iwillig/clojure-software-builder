@@ -5,3 +5,5 @@
 /.clj-kondo/.cache/
 /target/
 /classes/
+/db-path/
+/test.db/

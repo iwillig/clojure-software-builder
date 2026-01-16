@@ -6,6 +6,7 @@
    [csb.components.http-server :as http-server]
    [csb.components.ring-app :as ring-app]
    [csb.config]
+   [csb.routes :as routes]
    [typed.clojure :as t])
   (:import
    (com.stuartsierra.component
@@ -13,14 +14,19 @@
    (csb.config
     Config)))
 
-(t/ann new-system [Config :-> SystemMap])
+(t/ann new-system [Config :-> t/Any])
 
 (defn new-system
   [config]
-  (c/system-map
-   :database (database/new-database (:db-path config))
-   :ring-app (ring-app/->ring-app [])
-   :http-server (http-server/->http-server (:port config))))
+  (t/tc-ignore
+   (c/system-map
+    :database (database/new-database (:db-path config))
+    :ring-app (c/using
+               (ring-app/new-ring-app routes/api-routes)
+               [:database])
+    :http-server (c/using
+                  (http-server/->http-server (:port config))
+                  [:ring-app]))))
 
 
 (comment

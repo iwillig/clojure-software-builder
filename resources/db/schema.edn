@@ -120,6 +120,4 @@
  :tool-call/id         {:db/valueType :db.type/uuid
                         :db/unique    :db.unique/value}
 
- :file-change-apply/id {:db/valueType :db.type/uuid
-                        :db/unique    :db.unique/value}
-  }
+}
